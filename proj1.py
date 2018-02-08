@@ -1,13 +1,17 @@
 import numpy as np
+from sympy import exp, N, S
+from sympy.matrices import Matrix
 
-prob1_dfa = np.array([[1, 2], [2, 1]])
+
+prob1_dfa = matrix([[1, 2], [2, 1]])
+
+print(str(prob1_dfa **2))
+
 
 def prob1():
     '''
     Prompt for input then count the number of valid strings.
     '''
-
-    
     
     return count(100, prob1_dfa)
 
@@ -30,9 +34,17 @@ def count(n, dfa_transition_count):
 
     dfa_transition_count = pow(dfa_transition_count, n)
     
-    return starting_states * dfa_transition_count * ending_states
+    return np.dot(np.dot(starting_states, dfa_transition_count),
+                  ending_states)
 
 def pow(a,n):
+    '''
+    inputs:
+    a : np array of shape (m,m)
+    n : number to raise a to
+
+    return the matrix a ^ n of shape (m,m)
+    '''
     return np.linalg.matrix_power(a,n)
 
 def prob2():
@@ -49,6 +61,7 @@ def prob2():
     return
 
 
-print(str(pow(prob1_dfa ,2)))
+#print(str(prob1()))
+#print(str(pow(prob1_dfa, 100)))
 
 
