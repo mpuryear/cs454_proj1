@@ -32,11 +32,8 @@ def count(n, dfa_transition_count):
     
     return starting_states * dfa_transition_count * ending_states
 
-
 def pow(a,n):
-    for i in range(0,n - 1):
-        a = np.dot(a,a)
-    return a
+    return np.linalg.matrix_power(a,n)
 
 def prob2():
     '''
