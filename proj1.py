@@ -1,11 +1,6 @@
 import numpy as np
-from sympy import exp, N, S
-from sympy.matrices import Matrix
 
-
-prob1_dfa = matrix([[1, 2], [2, 1]])
-
-print(str(prob1_dfa **2))
+prob1_dfa = np.array([[1, 2], [2, 1]], dtype=object)
 
 
 def prob1():
@@ -13,7 +8,7 @@ def prob1():
     Prompt for input then count the number of valid strings.
     '''
     
-    return count(100, prob1_dfa)
+    return count(500, prob1_dfa)
 
 
 def count(n, dfa_transition_count):
@@ -61,7 +56,7 @@ def prob2():
     return
 
 
-#print(str(prob1()))
-#print(str(pow(prob1_dfa, 100)))
+
+
 
 
