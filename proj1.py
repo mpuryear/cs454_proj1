@@ -1,14 +1,31 @@
 import numpy as np
+import sys
 
-prob1_dfa = np.array([[1, 2], [2, 1]], dtype=object)
+# This is the number of edges connected to each node in the DFA used for problem 1.
+prob1_dfa_connections = np.array([[1, 2, 3], [3, 2, 1], [2,3,1]], dtype=object)
 
 
-def prob1():
+
+
+def prob1(n, test=False):
     '''
     Prompt for input then count the number of valid strings.
     '''
-    
-    return count(500, prob1_dfa)
+    if test:
+        return count(n, generate_test_matrix())
+    return count(n, prob1_dfa_connections)
+
+
+def generate_test_matrix(m_x_m=100):
+    '''
+    return randomly generated matrix of size (m,m)
+    '''
+    # This is how you can generate a 100x100 of type objet
+    # array randomly filled with 0-99 
+    a = np.random.randint(100,size=(m_x_m, m_x_m))
+    b = np.zeros([m_x_m, m_x_m], dtype='object')
+    np.copyto(b, a, casting='unsafe')
+    return b
 
 
 def count(n, dfa_transition_count):
@@ -24,13 +41,16 @@ def count(n, dfa_transition_count):
     string aabb
     '''
 
-    starting_states = [1, 0]
-    ending_states = np.array([[0], [1]])
+    starting_states = np.ones([1,dfa_transition_count.shape[0]], dtype='object')
+    ending_states = np.ones([dfa_transition_count.shape[1], 1], dtype='object')
 
     dfa_transition_count = pow(dfa_transition_count, n)
     
-    return np.dot(np.dot(starting_states, dfa_transition_count),
-                  ending_states)
+
+    print('shape1: ', str(starting_states.shape))
+    print('shape2: ', str(dfa_transition_count.shape))
+    print('shape3: ', str(ending_states.shape))
+    return np.dot(np.dot(starting_states, dfa_transition_count),ending_states)
 
 def pow(a,n):
     '''
@@ -56,7 +76,14 @@ def prob2():
     return
 
 
+if __name__== '__main__':
+    argv1 = int(sys.argv[1])
+    try:
+        argv2 = bool(sys.argv[2])
+        print(str(prob1(argv1, test=argv2)))
+    except:
+        print(str(prob1(argv1)))
+          
 
-
-
+          
 
