@@ -57,28 +57,10 @@ def test_dfa():
 
     print(d.run_with_input_list(inp_program))
 
-'''
-tf[(0, 'a')] = 1
-tf[(0, 'b')] = 2
-tf[(0, 'c')] = 3
-tf[(0, 'd')] = 0
-tf[(1, 'a')] = 1
-tf[(1, 'b')] = 2
-tf[(1, 'c')] = 3
-tf[(1, 'd')] = 0
-tf[(2, 'a')] = 1
-tf[(2, 'b')] = 2
-tf[(2, 'c')] = 3
-tf[(2, 'd')] = 0
-tf[(3, 'a')] = 1
-tf[(3, 'b')] = 2
-tf[(3, 'c')] = 3
-tf[(3, 'd')] = 0
-'''
 
 
+if __name__ == "__main__":
+    test_dfa()
 
-
-test_dfa()
 
 
