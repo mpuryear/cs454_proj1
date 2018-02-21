@@ -169,7 +169,7 @@ def prob2(k, digits):
     must use bfs for something
     '''
     
-    return
+    return 0
 
 def test_prob1(n, expected):
     ret_val = prob1(n)
@@ -178,7 +178,17 @@ def test_prob1(n, expected):
     print("expected: ", str(expected))
     print("output == expected: ", str(expected == ret_val))
 
-
+    
+def test_prob2(k, digits, expected):
+    ret_val = prob2(k, digits)
+    print("\ntest input: ", str(k), ", ",  str(digits))
+    if(expected == 1113313113):
+        print("output: ", str(ret_val))
+        print("expected: ", str(expected))
+        print("output == expected", str(ret_val == expected))
+    else:
+        print("len(output) == len(expected)", str(len(str(ret_val)) == expected))
+        
 
 def handle_prob1():
     n = input('\n(prob1) input n: ')
@@ -207,6 +217,16 @@ if __name__== '__main__':
         n = 100
         test_expected = 987802207638178400131884900
         test_prob1(n, test_expected)
+
+        k = 26147
+        digits = {1, 3}
+        test_expected = 1113313113
+        test_prob2(k, digits, test_expected)
+
+        k = 198217
+        digits = {1}
+        test_expected_length = 10962
+        test_prob2(k, digits, test_expected_length)
         
     except:
 
