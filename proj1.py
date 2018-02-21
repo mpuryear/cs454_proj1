@@ -158,7 +158,7 @@ def generate_test_matrix(shape, max_val=100):
 
 
 
-def prob2():
+def prob2(k, digits):
     '''
     eg delta func :
     for n = input: k=26147 on the provided paper
@@ -177,12 +177,29 @@ def test_prob1(n, expected):
     print("output: ", str(ret_val))
     print("expected: ", str(expected))
     print("output == expected: ", str(expected == ret_val))
+
+
+
+def handle_prob1():
+    n = input('\n(prob1) input n: ')
+    ret_val = prob1(int(n))
+    print('\tn = ', n)
+    print('\tnumber of strings of length n is : ', str(ret_val), "\n")
+    return
+
+def handle_prob2():
+    k = input('\n(prob2) input k: ')
+    digits = {}
+    digits = input('(prob2)  input Digits permitted: ')
+    print('\tInput: k = ', k, ', Digits permitted: ', str(digits))
+    ret_val = prob2(k, digits)
+    print('\tShortest multiple of k using digits {', digits, '}: ', str(ret_val))
+    return
     
 if __name__== '__main__':
-    argv1 = int(sys.argv[1])
-    start = time.time()
+
     try:
-        argv2 = bool(sys.argv[2])
+        argv1 = bool(sys.argv[1]) # check for passed test param
         n = 137
         test_expected = 6119266976149912241614898841866546736
         test_prob1(n, test_expected)
@@ -190,12 +207,18 @@ if __name__== '__main__':
         n = 100
         test_expected = 987802207638178400131884900
         test_prob1(n, test_expected)
-
         
     except:
-        print(str(prob1(argv1)))
 
-    print('\ntotal time elapsed: ', str(time.time()-start), ' seconds')
+        while(True):
+            user_input = input('Problem 1,2, or quit. (1,2,q) ')
+            if user_input == '1':
+                handle_prob1()
+            elif user_input == '2':
+                handle_prob2()
+            else:
+                break
+            
           
 
           
