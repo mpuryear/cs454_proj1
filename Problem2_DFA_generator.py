@@ -103,6 +103,3 @@ def min_string(u_input, alphabet):
     return str_val
 
 
-if __name__ == "__main__":
-    u_input = int(input("Enter a starting number: "))
-    alphabet = input("which characters are allowed: ").split()
