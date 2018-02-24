@@ -197,9 +197,11 @@ def handle_prob1():
     print('\tnumber of strings of length n is : ', str(ret_val), "\n")
     return
 
+
+
 def handle_prob2():
     k = input('\n(prob2) input k: ')
-    digits = {}
+    digits = []
     digits = input('(prob2)  input Digits permitted: ')
     print('\tInput: k = ', k, ', Digits permitted: ', str(digits))
     ret_val = prob2(k, digits)
@@ -236,8 +238,10 @@ if __name__== '__main__':
                 handle_prob1()
             elif user_input == '2':
                 handle_prob2()
-            else:
+            elif user_input == 'q':
                 break
+            else:
+                continue
             
           
 
