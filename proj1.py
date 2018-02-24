@@ -168,8 +168,10 @@ def prob2(k, digits):
 
     must use bfs for something
     '''
-    
-    return 0
+    import Problem2_DFA_generator as p2
+
+    return p2.min_string(k, digits)
+
 
 def test_prob1(n, expected):
     ret_val = prob1(n)
@@ -182,7 +184,7 @@ def test_prob1(n, expected):
 def test_prob2(k, digits, expected):
     ret_val = prob2(k, digits)
     print("\ntest input: ", str(k), ", ",  str(digits))
-    if(expected == 1113313113):
+    if(expected == '1113313113'):
         print("output: ", str(ret_val))
         print("expected: ", str(expected))
         print("output == expected", str(ret_val == expected))
@@ -200,18 +202,15 @@ def handle_prob1():
 
 
 def handle_prob2():
-    k = input('\n(prob2) input k: ')
-    digits = []
-    digits = input('(prob2)  input Digits permitted: ')
-    print('\tInput: k = ', k, ', Digits permitted: ', str(digits))
+    k = int(input('\n(prob2) input k: '))
+    digits = input('(prob2)  input Digits permitted: ').split()
+    print('\tInput: k = ', k, ', Digits permitted(space deliminated): ', str(digits))
     ret_val = prob2(k, digits)
-    print('\tShortest multiple of k using digits {', digits, '}: ', str(ret_val))
+    print('\tShortest multiple of k using digits ', digits, ': ', str(ret_val))
     return
-    
-if __name__== '__main__':
 
-    try:
-        argv1 = bool(sys.argv[1]) # check for passed test param
+
+def handle_tests():
         n = 137
         test_expected = 6119266976149912241614898841866546736
         test_prob1(n, test_expected)
@@ -221,17 +220,21 @@ if __name__== '__main__':
         test_prob1(n, test_expected)
 
         k = 26147
-        digits = {1, 3}
-        test_expected = 1113313113
+        digits = ['1', '3']
+        test_expected = '1113313113'
         test_prob2(k, digits, test_expected)
 
         k = 198217
-        digits = {1}
+        digits = ['1']
         test_expected_length = 10962
         test_prob2(k, digits, test_expected_length)
-        
-    except:
+    
 
+if __name__== '__main__':
+
+    if(len(sys.argv) > 1):
+        handle_tests()
+    else:
         while(True):
             user_input = input('Problem 1,2, or quit. (1,2,q) ')
             if user_input == '1':
