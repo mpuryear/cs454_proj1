@@ -1,3 +1,6 @@
+import numpy as np
+
+
 class DFA:
     current_state = None
 
@@ -29,38 +32,77 @@ class DFA:
         for inp in input_list:
             self.transition_to_state_with_input(inp)
         return self.in_accept_state()
-    pass
+
+    def breadth_first_search(self, vertex):
+        reach = np.zeros(len(self.states))
+        parent = len(self.states) * [None]
+        q = [vertex]
+        while(len(q)>0):
+            x = q.pop(0)
+            for elem in self.alphabet:
+                index = self.transition_function[x,elem]
+                if reach[index] == 0: 
+                    reach[index] = 1
+                    parent[index] = [x, elem]
+                    q.append(index)
+                    if index in self.accept_states:
+                        return reach,parent
+        return reach,parent
+
+    def find_int(self, parents, reach):
+        path = []
+        if reach[0] == 0:
+            return None
+        current = 0
+        while parents[current][0] != 0:
+            if reach[current] != 0:
+                path.append(parents[current][1])
+                current = parents[current][0]
+            else:
+               break
+        path.append(parents[current][1])
+        path.reverse()
+        return(path)        
 
 
-def test_dfa():
-    # states = {0, 1, 2, 3}
+def gen_dfa(k, alphabet):
     states = set()
-    u_input = int(input("Enter a starting number: "))
-    for i in range(u_input):
+    for i in range(k):
         states.add(i)
 
-    # alphabet = {'a', 'b', 'c', 'd'}
-    alphabet = input("which characters are allowed: ").split()
     for i in range(len(alphabet)):
         alphabet[i] = int(alphabet[i])
 
     tf = dict()
     for current_state in states:
         for letter in alphabet:
-            tf[current_state, letter] = (10*current_state+letter) % u_input
+            tf[current_state, letter] = (10*current_state+letter) % k
 
     accept_states = {0}
     start_state = 0
     d = DFA(states, alphabet, tf, start_state, accept_states)
 
-    inp_program = [1,1,1,1,1,1,1,1,1]
 
-    print(d.run_with_input_list(inp_program))
+    return d
 
+
+def min_string(u_input, alphabet):
+    """
+    input:
+       u_input: the user input number
+
+    """
+    if ("0" in alphabet) and len(alphabet) == 1:
+        return None
+    d = gen_dfa(u_input, alphabet)
+    reach, parents = d.breadth_first_search(0)
+    num_array = d.find_int(parents, reach)
+    str_val = ""
+    for elem in num_array:
+        str_val+=str(elem)
+    return str_val
 
 
 if __name__ == "__main__":
-    test_dfa()
-
-
-
+    u_input = int(input("Enter a starting number: "))
+    alphabet = input("which characters are allowed: ").split()
