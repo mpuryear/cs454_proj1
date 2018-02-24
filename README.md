@@ -5,3 +5,6 @@
 ## Team:
 
    Mathew Puryear, Boaz Cogan
+
+
+[Problem 1 DFA](https://imgur.com/a/jctfB)
