@@ -203,8 +203,8 @@ def handle_prob1():
 
 def handle_prob2():
     k = int(input('\n(prob2) input k: '))
-    digits = input('(prob2)  input Digits permitted: ').split()
-    print('\tInput: k = ', k, ', Digits permitted(space deliminated): ', str(digits))
+    digits = input('(prob2) input Digits permitted(space deliminated): ').split()
+    print('\tInput: k = ', k, ', Digits permitted: ', str(digits))
     ret_val = prob2(k, digits)
     print('\tShortest multiple of k using digits ', digits, ': ', str(ret_val))
     return
@@ -236,12 +236,12 @@ if __name__== '__main__':
         handle_tests()
     else:
         while(True):
-            user_input = input('Problem 1,2, or quit. (1,2,q) ')
-            if user_input == '1':
+            user_input = input('\nProblem 1,2, or quit. (1,2,q) ')
+            if user_input.strip() == '1':
                 handle_prob1()
-            elif user_input == '2':
+            elif user_input.strip() == '2':
                 handle_prob2()
-            elif user_input == 'q':
+            elif user_input.strip() == 'q':
                 break
             else:
                 continue
