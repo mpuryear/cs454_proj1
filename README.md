@@ -7,4 +7,5 @@
    Mathew Puryear, Boaz Cogan
 
 
+### DFA used for problem 1
 ![Problem 1 DFA](https://i.imgur.com/RqvUSQN.png)
