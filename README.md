@@ -7,4 +7,4 @@
    Mathew Puryear, Boaz Cogan
 
 
-[Problem 1 DFA](https://i.imgur.com/RqvUSQN.png)
+![Problem 1 DFA](https://i.imgur.com/RqvUSQN.png)
