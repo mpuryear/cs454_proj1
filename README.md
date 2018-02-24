@@ -2,7 +2,6 @@
 
 ## [Assignment Paper](https://github.com/mpuryear/cs454_proj1/blob/master/project1.pdf)
 
-### Problem 1 :
+## Team:
 
-
-### Problem 2 :
+   Mathew Puryear, Boaz Cogan
