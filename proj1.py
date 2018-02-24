@@ -1,3 +1,9 @@
+'''
+Project : Proj1
+Team : Mathew Puryear, Boaz Cogan
+'''
+
+
 import numpy as np
 import sys
 import time
